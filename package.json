@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "'custom package by surabhi at 12-21-2025'",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
