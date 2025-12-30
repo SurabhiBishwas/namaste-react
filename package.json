@@ -1,0 +1,32 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "'custom package by surabhi at 12-21-2025'",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SurabhiBishwas/namaste-react.git"
+  },
+  "keywords": [
+    "react",
+    "npm-package"
+  ],
+  "author": "Surabhi Bishwas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SurabhiBishwas/namaste-react/issues"
+  },
+  "homepage": "https://github.com/SurabhiBishwas/namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}
