@@ -40,10 +40,12 @@ const FooterComponent = () => (
 );
 
 // component composition is the process of combining multiple components to create a new component.
+const pageTitle = 'Namaste React';
 
 function HomeComponent() {
     return (
         <div>
+            Welcome to {console.log(pageTitle)}.
             <NavComponent />
             <h1>Home Component</h1>
             <FooterComponent/>
