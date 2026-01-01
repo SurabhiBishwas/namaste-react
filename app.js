@@ -46,9 +46,9 @@ function HomeComponent() {
     return (
         <div>
             Welcome to {console.log(pageTitle)}.
-            <NavComponent />
+            <NavComponent></NavComponent>
             <h1>Home Component</h1>
-            <FooterComponent/>
+            {FooterComponent()}
         </div>
     )
 }
