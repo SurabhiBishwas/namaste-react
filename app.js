@@ -57,4 +57,30 @@ console.log(typeof jsXElement);
 
 console.log(jsXElement);
 // rootElement.render(element);
-rootElement.render(<HomeComponent/>); // this is a JSX element, not a ReactElement.
+
+const headerJSXElem = (
+    <div>
+        <h1 className="heading">Heading 1</h1>
+        <h2 className="heading">Heading 2</h2>
+        <h3 className="heading">Heading 3</h3>
+    </div>
+);
+
+
+const headerRawElem = React.createElement('div', {}, [
+    React.createElement('h1', {className: 'heading'}, 'Heading 1'),
+    React.createElement('h2', {className: 'heading'}, 'Heading 2'),
+    React.createElement('h3', {className: 'heading'}, 'Heading 3'),
+]);
+
+function HeaderFunctionalComponent () {
+    return (
+        <div>
+            <h1 className="heading">Functional Component Heading 1</h1>
+            <h2 className="heading">Functional Component Heading 2</h2>
+            <h3 className="heading">Functional Component Heading 3</h3>
+        </div>
+    )
+}
+
+rootElement.render(<HeaderFunctionalComponent></HeaderFunctionalComponent>); // this is a JSX element, not a ReactElement.
