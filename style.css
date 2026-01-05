@@ -39,8 +39,15 @@
     cursor: pointer;
 }
 
+.filter {
+    display: flex;
+    gap: 2rem;
+}
+
 .search {
     padding: 10px;
+    display: flex;
+    gap: 5px;
 }
 
 .res-logo {
@@ -50,4 +57,24 @@
 .filter-btn {
     margin: 10px;
     cursor: pointer;
+}
+
+.shimmer-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+    width: 200px;
+    height: 400px;
+    background-color: #f0f0f0;
+}
+
+.login-btn {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid black;
+    border-radius: 10px;
 }
