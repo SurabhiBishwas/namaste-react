@@ -1,5 +1,4 @@
 import {RestaurantCard} from './RestaurantCard';
-import resList from '../utils/mockData';
 import {useState, useEffect} from 'react';
 import Shimmer from './Shimmer'
 
@@ -13,12 +12,12 @@ const Body = () => {
     }, []);
 
     const fetchRestaurants = async () => {
-        // const apiRes = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.8452145&lng=77.6601695&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
-        // const data = await apiRes.json();
-        setTimeout(() => {
-            setRestaurantsList(resList);
-            setFilteredRestaurantsList(resList);
-        }, 2000);
+        const apiRes = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.8452145&lng=77.6601695&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
+        const data = await apiRes.json();
+        const resList = data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        console.log(resList);
+        setRestaurantsList(resList);
+        setFilteredRestaurantsList(resList);
     }
 
     if(!restaurantsList?.length) {
