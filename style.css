@@ -18,7 +18,7 @@
     list-style-type: none;
 }
 
-.nav-items > ul > li {
+.nav-items > ul > a {
     padding: 10px;
     margin: 10px;
 }
