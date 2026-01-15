@@ -31,22 +31,22 @@ const Body = () => {
     }
 
     return (
-        <div className='body'>
-            <div className='filter'>
-                <div className='search'>
-                    <input type='text' className='search-box' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
+        <div className='p-4 flex flex-col gap-4'>
+            <div className='flex justify-between items-center'>
+                <div className='flex items-center gap-2'>
+                    <input type='text' className='w-96 p-2 border-2 border-amber-500 rounded-md' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
                     <button onClick={() => {
                         setFilteredRestaurantsList(restaurantsList.filter(res => res.info.name.toLowerCase().includes(searchText.toLowerCase())))
-                    }}>Search</button>
+                    }} className='bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-blue-500'>Search</button>
                 </div>
-                <button className='filter-btn'
+                <button className='bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-blue-500'
                     onClick={() => {
                         setFilteredRestaurantsList(restaurantsList.filter(res => res.info.avgRating>=4.5));
                     }}>
                     Top Rated Restaurants
                 </button>
             </div>
-            <div className='res-container'>
+            <div className='flex flex-wrap gap-4 justify-center bg-amber-100 p-4 rounded-lg'>
                 {filteredRestaurantsList.map(res => <RestaurantCard key={res?.info?.id} restaurant={res} />)}
             </div>
         </div>
