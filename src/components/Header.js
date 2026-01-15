@@ -19,6 +19,7 @@ const Header = () => {
                     <Link to="/about-us">About Us</Link>
                     <Link to="/contact-us">Contact Us</Link>
                     <Link to="/cart">Cart</Link>
+                    <Link to="/grocery">Grocery</Link>
                     <button className='login-btn' onClick={() => setIsLoggedIn(!isLoggedIn)}>{isLoggedIn ? 'Log Out' : 'Log In'}</button>
                 </ul>
             </div>
