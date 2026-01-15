@@ -1,4 +1,4 @@
-import {RestaurantCard} from './RestaurantCard';
+import {RestaurantCard, withPromotedLabel} from './RestaurantCard';
 import {useState, useEffect} from 'react';
 import Shimmer from './Shimmer'
 import useOnlineStatus from '../utils/useOnlineStatus';
@@ -7,6 +7,7 @@ const Body = () => {
     const [restaurantsList, setRestaurantsList] = useState([]);
     const [filteredRestaurantsList, setFilteredRestaurantsList] = useState([]);
     const [searchText, setSearchText] = useState('');
+    const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
 
     useEffect(res => {
         fetchRestaurants();
@@ -47,7 +48,13 @@ const Body = () => {
                 </button>
             </div>
             <div className='flex flex-wrap gap-4 justify-center bg-amber-100 p-4 rounded-lg'>
-                {filteredRestaurantsList.map(res => <RestaurantCard key={res?.info?.id} restaurant={res} />)}
+                {
+                    filteredRestaurantsList.map(res => res?.info?.promoted
+                        ? <PromotedRestaurantCard key={res?.info?.id} restaurant={res} />
+                        : <RestaurantCard key={res?.info?.id} restaurant={res} />
+                        
+                    )
+                }
             </div>
         </div>
     )
