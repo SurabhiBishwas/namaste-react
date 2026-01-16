@@ -1,7 +1,10 @@
 import {RESTAURANT_CDN_URL} from '../utils/constants';
 import { Link } from 'react-router-dom';
+import UserContext from '../utils/UserContext';
+import { useContext } from 'react';
 
 export const RestaurantCard = ({restaurant}) => {
+    const userData = useContext(UserContext);
     const {id, cloudinaryImageId, name, cuisines, avgRating, sla} = restaurant.info
     return (
         <Link to={'/restaurant/'+ id}>
@@ -11,6 +14,7 @@ export const RestaurantCard = ({restaurant}) => {
                 <h4 className='text-sm text-gray-500'>{cuisines.join(', ')}</h4>
                 <h4 className='text-sm text-gray-500'>{avgRating} stars</h4>
                 <h4 className='text-sm text-gray-500'>{sla.deliveryTime} minutes</h4>
+                <h4 className='text-sm text-gray-500'>{userData.name}</h4>
             </div>
         </Link>
     )
