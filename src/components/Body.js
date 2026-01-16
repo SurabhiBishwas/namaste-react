@@ -1,14 +1,16 @@
 import {RestaurantCard, withPromotedLabel} from './RestaurantCard';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import Shimmer from './Shimmer'
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/UserContext';
 
 const Body = () => {
     const [restaurantsList, setRestaurantsList] = useState([]);
     const [filteredRestaurantsList, setFilteredRestaurantsList] = useState([]);
     const [searchText, setSearchText] = useState('');
     const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
-
+    const userData = useContext(UserContext);
+    const [user, setUser] = useState(userData);
     useEffect(res => {
         fetchRestaurants();
     }, []);
@@ -40,6 +42,7 @@ const Body = () => {
                         setFilteredRestaurantsList(restaurantsList.filter(res => res.info.name.toLowerCase().includes(searchText.toLowerCase())))
                     }} className='bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-blue-500'>Search</button>
                 </div>
+                <input value={user.name} className='w-96 p-2 border-2 border-amber-500 rounded-md' onChange={(e) => setUser({...user, name: e.target.value})}></input>
                 <button className='bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-blue-500'
                     onClick={() => {
                         setFilteredRestaurantsList(restaurantsList.filter(res => res.info.avgRating>=4.5));
@@ -52,7 +55,6 @@ const Body = () => {
                     filteredRestaurantsList.map(res => res?.info?.promoted
                         ? <PromotedRestaurantCard key={res?.info?.id} restaurant={res} />
                         : <RestaurantCard key={res?.info?.id} restaurant={res} />
-                        
                     )
                 }
             </div>
