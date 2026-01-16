@@ -11,6 +11,7 @@ const Body = () => {
     const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
     const userData = useContext(UserContext);
     const [user, setUser] = useState(userData);
+
     useEffect(res => {
         fetchRestaurants();
     }, []);
@@ -50,6 +51,7 @@ const Body = () => {
                     Top Rated Restaurants
                 </button>
             </div>
+            <UserContext.Provider value={user}>
             <div className='flex flex-wrap gap-4 justify-center bg-amber-100 p-4 rounded-lg'>
                 {
                     filteredRestaurantsList.map(res => res?.info?.promoted
@@ -58,6 +60,7 @@ const Body = () => {
                     )
                 }
             </div>
+            </UserContext.Provider>
         </div>
     )
 }
