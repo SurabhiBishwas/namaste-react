@@ -1,10 +1,10 @@
 import {RESTAURANT_CDN_URL} from '../utils/constants';
 import { Link } from 'react-router-dom';
-import UserContext from '../utils/UserContext';
+import UserDataContext from '../utils/UserDataContext';
 import { useContext } from 'react';
 
 export const RestaurantCard = ({restaurant}) => {
-    const userData = useContext(UserContext);
+    const userData = useContext(UserDataContext);
     const {id, cloudinaryImageId, name, cuisines, avgRating, sla} = restaurant.info
     return (
         <Link to={'/restaurant/'+ id}>

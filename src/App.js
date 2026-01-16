@@ -1,4 +1,4 @@
-import React, {lazy} from 'react';
+import React, {lazy, useContext, useState, useEffect} from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import Body from './components/Body';
@@ -8,15 +8,25 @@ import ContactUs from './components/Contact';
 import Cart from './components/Cart';
 import RestaurantMenu from './components/RestaurantMenu';
 // import Grocery from './components/Grocery'
+import UserDataContext from './utils/UserDataContext';
 
 const Grocery = lazy(() => import('./components/Grocery'));
 
 function AppLayout() {
+    const data = useContext(UserDataContext);
+    const [user, setUser] = useState(data);
+
+    // useEffect(() => {
+    //     setUser({name: 'John Doe'});
+    // }, []);
+
     return (
-        <div className='app'>
-            <Header/>
-            <Outlet/>
-        </div>
+        <UserDataContext.Provider value={{name: user.name, setUser}}>
+            <div className='app'>
+                <Header/>
+                <Outlet/>
+            </div>
+        </UserDataContext.Provider>
     )
 }
 
