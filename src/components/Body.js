@@ -29,35 +29,34 @@ const Body = () => {
     if(!onlineStatus)
         return <h1>Please check your Internet connection !!!</h1>
 
-    if(!restaurantsList?.length) {
-        return Shimmer();
-    }
 
     return (
         <div className='p-4 flex flex-col gap-4'>
-            <div className='flex justify-between items-center'>
-                <div className='flex items-center gap-2'>
-                    <input type='text' className='w-96 p-2 border-2 border-amber-500 rounded-md' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
-                    <button onClick={() => {
-                        setFilteredRestaurantsList(restaurantsList.filter(res => res.info.name.toLowerCase().includes(searchText.toLowerCase())))
-                    }} className='bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-blue-500'>Search</button>
+            {!restaurantsList?.length ? <Shimmer/> : <>
+                <div className='flex justify-between items-center'>
+                    <div className='flex items-center gap-2'>
+                        <input type='text' className='w-96 p-2 border-2 border-amber-500 rounded-md' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
+                        <button onClick={() => {
+                            setFilteredRestaurantsList(restaurantsList.filter(res => res.info.name.toLowerCase().includes(searchText.toLowerCase())))
+                        }} className='bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-blue-500'>Search</button>
+                    </div>
+                    <input value={name} className='w-96 p-2 border-2 border-amber-500 rounded-md' onChange={(e) => setUser({name: e.target.value})}></input>
+                    <button className='bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-blue-500'
+                        onClick={() => {
+                            setFilteredRestaurantsList(restaurantsList.filter(res => res.info.avgRating>=4.5));
+                        }}>
+                        Top Rated Restaurants
+                    </button>
                 </div>
-                <input value={name} className='w-96 p-2 border-2 border-amber-500 rounded-md' onChange={(e) => setUser({name: e.target.value})}></input>
-                <button className='bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-blue-500'
-                    onClick={() => {
-                        setFilteredRestaurantsList(restaurantsList.filter(res => res.info.avgRating>=4.5));
-                    }}>
-                    Top Rated Restaurants
-                </button>
-            </div>
-            <div className='flex flex-wrap gap-4 justify-center bg-amber-100 p-4 rounded-lg'>
-                {
-                    filteredRestaurantsList.map(res => res?.info?.promoted
-                        ? <PromotedRestaurantCard key={res?.info?.id} restaurant={res} />
-                        : <RestaurantCard key={res?.info?.id} restaurant={res} />
-                    )
-                }
-            </div>
+                <div className='flex flex-wrap gap-4 justify-center bg-amber-100 p-4 rounded-lg'>
+                    {
+                        filteredRestaurantsList.map(res => res?.info?.promoted
+                            ? <PromotedRestaurantCard key={res?.info?.id} restaurant={res} />
+                            : <RestaurantCard key={res?.info?.id} restaurant={res} />
+                        )
+                    }
+                </div>
+            </>}
         </div>
     )
 }

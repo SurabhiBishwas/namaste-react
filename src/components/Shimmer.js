@@ -7,6 +7,12 @@ const Shimmer = () => {
             <div className="w-72 h-48 bg-gray-200 rounded-lg"></div>
             <div className="w-72 h-48 bg-gray-200 rounded-lg"></div>
             <div className="w-72 h-48 bg-gray-200 rounded-lg"></div>
+            <div className="w-72 h-48 bg-gray-200 rounded-lg"></div>
+            <div className="w-72 h-48 bg-gray-200 rounded-lg"></div>
+            <div className="w-72 h-48 bg-gray-200 rounded-lg"></div>
+            <div className="w-72 h-48 bg-gray-200 rounded-lg"></div>
+            <div className="w-72 h-48 bg-gray-200 rounded-lg"></div>
+            <div className="w-72 h-48 bg-gray-200 rounded-lg"></div>
         </div>
     )
 }
