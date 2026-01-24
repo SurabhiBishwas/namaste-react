@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import ContactUs from '../Contact';
 import '@testing-library/jest-dom';
 
-test('Contact Us should render correctly', () => {
+test('check if button type submit is present', () => {
     render(<ContactUs />);
-    const heading = screen.getByText('Contact Us');
-    expect(heading).toBeInTheDocument();
+    const submitButton = screen.getByRole('button');
+    expect(submitButton).toHaveAttribute('type', 'submit');
 });
